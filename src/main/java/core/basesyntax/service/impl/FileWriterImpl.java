@@ -1,12 +1,12 @@
 package core.basesyntax.service.impl;
 
 import core.basesyntax.service.FileWriter;
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class FileWriterImpl implements FileWriter {
-    PrintWriter writer;
+    private PrintWriter writer;
+
     @Override
     public void writeReport(String report) {
         try {

@@ -5,10 +5,12 @@ import core.basesyntax.model.FruitTransaction;
 import core.basesyntax.strategy.DataOperation;
 
 public class SupplyOperation implements DataOperation {
-    StorageDao dao;
+    private StorageDao dao;
+
     public SupplyOperation(StorageDao dao) {
         this.dao = dao;
     }
+
     @Override
     public void execute(FruitTransaction fruit) {
         dao.addQuantity(fruit.getName(), fruit.getQuantity());

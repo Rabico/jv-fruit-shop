@@ -2,7 +2,7 @@ package core.basesyntax.db;
 
 import core.basesyntax.model.FruitTransaction;
 
-public class StorageDaoImpl implements StorageDao{
+public class StorageDaoImpl implements StorageDao {
     @Override
     public void add(FruitTransaction fruit) {
         Storage.fruits.put(fruit.getName(), fruit.getQuantity());

@@ -4,6 +4,7 @@ public class FruitTransaction {
     private String name;
     private int quantity;
     private Operation operation;
+
     public FruitTransaction(String operation, String name, int quantity) {
         this.name = name;
         this.quantity = quantity;
