@@ -1,0 +1,29 @@
+package core.basesyntax.model;
+
+public class FruitTransaction {
+    private String name;
+    private int quantity;
+    private Operation operation;
+    public FruitTransaction(String operation, String name, int quantity) {
+        this.name = name;
+        this.quantity = quantity;
+        switch (operation) {
+            case "b" -> this.operation = Operation.BALANCE;
+            case "s" -> this.operation = Operation.SUPPLY;
+            case "p" -> this.operation = Operation.PURCHASE;
+            case "r" -> this.operation = Operation.RETURN;
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Operation getOperation() {
+        return operation;
+    }
+}
