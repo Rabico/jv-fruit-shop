@@ -1,12 +1,12 @@
 package core.basesyntax.db;
 
 import core.basesyntax.model.FruitTransaction;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class StorageDaoImpl implements StorageDao {
     private static Map<String, Integer> fruits = new HashMap<String, Integer>();
+
     @Override
     public void add(FruitTransaction fruit) {
         fruits.put(fruit.getName(), fruit.getQuantity());

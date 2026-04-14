@@ -2,7 +2,6 @@ package core.basesyntax.service.impl;
 
 import core.basesyntax.db.StorageDao;
 import core.basesyntax.service.ReportGenerator;
-
 import java.util.Map;
 
 public class ReportGeneratorImpl implements ReportGenerator {
@@ -17,7 +16,8 @@ public class ReportGeneratorImpl implements ReportGenerator {
         Map<String, Integer> fruits = dao.getData();
         StringBuilder builder = new StringBuilder();
         builder.append("fruit,quantity")
-            .append(System.lineSeparator());
+                .append(System.lineSeparator());
+
         for (String key : fruits.keySet()) {
             builder.append(key)
                     .append(",")

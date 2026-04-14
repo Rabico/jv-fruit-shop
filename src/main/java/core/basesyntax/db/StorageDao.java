@@ -1,7 +1,6 @@
 package core.basesyntax.db;
 
 import core.basesyntax.model.FruitTransaction;
-
 import java.util.Map;
 
 public interface StorageDao {

@@ -1,14 +1,10 @@
 package core.basesyntax.service.impl;
 
 import core.basesyntax.service.FileReader;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +15,10 @@ public class FileReaderImpl implements FileReader {
 
         try (InputStream inputStream = getClass()
                 .getClassLoader()
-                .getResourceAsStream(fileName)){
+                .getResourceAsStream(fileName)) {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
-            while ( (line = bufferedReader.readLine()) != null ) {
+            while ((line = bufferedReader.readLine()) != null) {
                 list.add(line);
             }
         } catch (IOException e) {

@@ -1,7 +1,6 @@
 package core.basesyntax.service.impl;
 
 import core.basesyntax.model.FruitTransaction;
-import core.basesyntax.model.Operation;
 import core.basesyntax.service.DataConverter;
 import java.util.List;
 
@@ -19,11 +18,12 @@ public class DataConverterImpl implements DataConverter {
         int i = 0;
         try {
             i = Integer.parseInt(s);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ignored) {
 
         }
         return i;
     }
+
     private FruitTransaction parseTransaction(String[] s) {
         if (s.length != 2) {
             throw new IllegalArgumentException();
