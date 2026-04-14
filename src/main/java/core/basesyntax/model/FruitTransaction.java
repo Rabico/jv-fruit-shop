@@ -8,12 +8,7 @@ public class FruitTransaction {
     public FruitTransaction(String operation, String name, int quantity) {
         this.name = name;
         this.quantity = quantity;
-        switch (operation) {
-            case "b" -> this.operation = Operation.BALANCE;
-            case "s" -> this.operation = Operation.SUPPLY;
-            case "p" -> this.operation = Operation.PURCHASE;
-            case "r" -> this.operation = Operation.RETURN;
-        }
+        this.operation = Operation.valueOf(operation);
     }
 
     public String getName() {

@@ -13,6 +13,6 @@ public class PurchaseOperation implements DataOperation {
 
     @Override
     public void execute(FruitTransaction fruit) {
-        dao.subtractionQuantity(fruit.getName(), fruit.getQuantity());
+        dao.subtractQuantity(fruit.getName(), fruit.getQuantity());
     }
 }

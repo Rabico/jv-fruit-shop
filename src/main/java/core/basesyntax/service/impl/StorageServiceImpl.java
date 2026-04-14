@@ -11,14 +11,12 @@ public class StorageServiceImpl implements StorageService {
     private List<FruitTransaction> fruitTransactions;
     private Map<Operation, DataOperation> operations;
 
-    public StorageServiceImpl(List<FruitTransaction> fruitTransactions, Map<Operation,
-            DataOperation> operations) {
-        this.fruitTransactions = fruitTransactions;
+    public StorageServiceImpl(Map<Operation, DataOperation> operations) {
         this.operations = operations;
     }
 
     @Override
-    public void update() {
+    public void update(List<FruitTransaction> fruitTransactions) {
         for (FruitTransaction fruitTransaction : fruitTransactions) {
             operations.get(fruitTransaction.getOperation()).execute(fruitTransaction);
         }

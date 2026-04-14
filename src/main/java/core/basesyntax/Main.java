@@ -30,7 +30,7 @@ public class Main {
         List<String> transactionList = fileReader.readFile("Data.csv");
         // 2. Convert data from String List to Fruit Transaction List
         DataConverter dataConverter = new DataConverterImpl();
-        List<FruitTransaction> fruitTransactions = dataConverter.getTransactions(transactionList);
+        List<FruitTransaction> fruitTransactions = dataConverter.convertToTransaction(transactionList);
         // 3. Update the Storage according to transactions
         Map<Operation, DataOperation> operations = new HashMap<>();
         StorageDao dao = new StorageDaoImpl();
@@ -38,14 +38,14 @@ public class Main {
         operations.put(Operation.PURCHASE, new PurchaseOperation(dao));
         operations.put(Operation.RETURN, new ReturnOperation(dao));
         operations.put(Operation.SUPPLY, new SupplyOperation(dao));
-        StorageService storageService = new StorageServiceImpl(fruitTransactions, operations);
-        storageService.update();
+        StorageService storageService = new StorageServiceImpl(operations);
+        storageService.update(fruitTransactions);
         // 4. Generate report
         ReportGenerator generator = new ReportGeneratorImpl(dao);
         String report = generator.generateReport();
         // 5. Save report to file
         FileWriter fileWriter = new FileWriterImpl();
-        fileWriter.writeReport(report);
+        fileWriter.writeReport(report, "Report.csv");
     }
 
 }
