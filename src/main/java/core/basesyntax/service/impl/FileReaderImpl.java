@@ -17,7 +17,7 @@ public class FileReaderImpl implements FileReader {
                 .getClassLoader()
                 .getResourceAsStream(fileName)) {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
+            String line = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
                 list.add(line);
             }

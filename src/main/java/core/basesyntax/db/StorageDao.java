@@ -7,9 +7,9 @@ public interface StorageDao {
 
     void add(FruitTransaction fruit);
 
-    void addQuantity(String fruitName, int quantity);
+    int actualQuantity(String fruitName);
 
-    void subtractQuantity(String fruitName, int quantity);
+    void updateQuantity(String fruitName, int quantity);
 
     Map<String, Integer> getData();
 }

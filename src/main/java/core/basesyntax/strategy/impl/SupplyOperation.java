@@ -13,6 +13,8 @@ public class SupplyOperation implements DataOperation {
 
     @Override
     public void execute(FruitTransaction fruit) {
-        dao.addQuantity(fruit.getName(), fruit.getQuantity());
+
+        dao.updateQuantity(fruit.getName(), fruit.getQuantity()
+                + dao.actualQuantity(fruit.getName()));
     }
 }

@@ -9,25 +9,28 @@ public class StorageDaoImpl implements StorageDao {
 
     @Override
     public void add(FruitTransaction fruit) {
+        if (fruits.containsKey(fruit.getName())) {
+            throw new IllegalArgumentException("Fruit already exists");
+        }
         fruits.put(fruit.getName(), fruit.getQuantity());
     }
 
     @Override
-    public void addQuantity(String fruitName, int quantity) {
+    public int actualQuantity(String fruitName) {
         checkFruit(fruitName);
-        fruits.put(fruitName, fruits.getOrDefault(fruitName, 0) + quantity);
+        return fruits.get(fruitName);
     }
 
     @Override
-    public void subtractQuantity(String fruitName, int quantity) {
+    public void updateQuantity(String fruitName, int quantity) {
         checkFruit(fruitName);
-        fruits.put(fruitName, fruits.getOrDefault(fruitName, 0) - quantity);
+        fruits.put(fruitName, quantity);
     }
 
     @Override
     public Map<String, Integer> getData() {
 
-        return fruits;
+        return new HashMap<>(fruits);
     }
 
     private void checkFruit(String fruitName) {

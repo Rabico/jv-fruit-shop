@@ -13,6 +13,11 @@ public class PurchaseOperation implements DataOperation {
 
     @Override
     public void execute(FruitTransaction fruit) {
-        dao.subtractQuantity(fruit.getName(), fruit.getQuantity());
+
+        if (fruit.getQuantity() > dao.actualQuantity(fruit.getName())) {
+            throw new IllegalArgumentException("Balance can't be negative");
+        }
+        dao.updateQuantity(fruit.getName(), dao.actualQuantity(fruit.getName())
+                - fruit.getQuantity());
     }
 }

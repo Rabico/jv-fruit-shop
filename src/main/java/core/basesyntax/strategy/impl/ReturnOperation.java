@@ -13,6 +13,8 @@ public class ReturnOperation implements DataOperation {
 
     @Override
     public void execute(FruitTransaction fruit) {
-        dao.subtractQuantity(fruit.getName(), fruit.getQuantity());
+
+        dao.updateQuantity(fruit.getName(), fruit.getQuantity()
+                + dao.actualQuantity(fruit.getName()));
     }
 }

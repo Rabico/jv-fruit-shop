@@ -6,9 +6,15 @@ public class FruitTransaction {
     private Operation operation;
 
     public FruitTransaction(String operation, String name, int quantity) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Fruit name cannot be null or blank");
+        }
         this.name = name;
+        if (quantity < 0) {
+            throw new IllegalArgumentException("quantity must be positive");
+        }
         this.quantity = quantity;
-        this.operation = Operation.valueOf(operation);
+        this.operation = Operation.fromCode(operation);
     }
 
     public String getName() {
