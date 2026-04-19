@@ -12,4 +12,6 @@ public interface StorageDao {
     void updateQuantity(String fruitName, int quantity);
 
     Map<String, Integer> getData();
+
+    boolean checkFruit(String fruitName);
 }

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FileReaderImpl implements FileReader {
@@ -13,11 +14,19 @@ public class FileReaderImpl implements FileReader {
     public List<String> readFile(String fileName) {
         List<String> list = new ArrayList<>();
 
-        try (InputStream inputStream = getClass()
+        InputStream inputStream = getClass()
                 .getClassLoader()
-                .getResourceAsStream(fileName)) {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line = bufferedReader.readLine();
+                .getResourceAsStream(fileName);
+            if (inputStream == null) {
+                throw new RuntimeException("Resource not found: " + fileName
+                    + ". Make sure the file is placed in src/main/resources and the name is correct.");
+            }
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))){
+            String header = bufferedReader.readLine(); //  explicitly skip header
+            if (header == null) {
+                return Collections.emptyList();
+            }
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 list.add(line);
             }

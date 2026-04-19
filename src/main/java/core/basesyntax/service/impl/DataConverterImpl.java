@@ -18,15 +18,18 @@ public class DataConverterImpl implements DataConverter {
         int i = 0;
         try {
             i = Integer.parseInt(s);
-        } catch (NumberFormatException ignored) {
-
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid integer: " + s);
         }
         return i;
     }
 
     private FruitTransaction parseTransaction(String[] s) {
-        if (s.length != 2) {
-            throw new IllegalArgumentException();
+        if (s.length != 3) {
+            throw new IllegalArgumentException("wrong transaction length");
+        }
+        for (String line : s ) {
+            line.trim();
         }
         return new FruitTransaction(s[0], s[1],
                 parseInteger(s[2]));

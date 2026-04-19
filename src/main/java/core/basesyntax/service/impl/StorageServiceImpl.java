@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class StorageServiceImpl implements StorageService {
-    private List<FruitTransaction> fruitTransactions;
     private Map<Operation, DataOperation> operations;
 
     public StorageServiceImpl(Map<Operation, DataOperation> operations) {

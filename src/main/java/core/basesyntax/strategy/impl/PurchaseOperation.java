@@ -14,6 +14,10 @@ public class PurchaseOperation implements DataOperation {
     @Override
     public void execute(FruitTransaction fruit) {
 
+        if (!dao.checkFruit(fruit.getName())) {
+            throw new RuntimeException("The fruit " + fruit.getName() + " is not exist");
+        }
+
         if (fruit.getQuantity() > dao.actualQuantity(fruit.getName())) {
             throw new IllegalArgumentException("Balance can't be negative");
         }

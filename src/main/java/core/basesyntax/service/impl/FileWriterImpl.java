@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class FileWriterImpl implements FileWriter {
-    private PrintWriter writer;
 
     @Override
     public void writeReport(String report, String fileName) {

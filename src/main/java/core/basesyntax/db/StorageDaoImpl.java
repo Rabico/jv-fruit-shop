@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StorageDaoImpl implements StorageDao {
-    private static Map<String, Integer> fruits = new HashMap<String, Integer>();
+    private Map<String, Integer> fruits = new HashMap<String, Integer>();
 
     @Override
     public void add(FruitTransaction fruit) {
@@ -17,13 +17,11 @@ public class StorageDaoImpl implements StorageDao {
 
     @Override
     public int actualQuantity(String fruitName) {
-        checkFruit(fruitName);
         return fruits.get(fruitName);
     }
 
     @Override
     public void updateQuantity(String fruitName, int quantity) {
-        checkFruit(fruitName);
         fruits.put(fruitName, quantity);
     }
 
@@ -33,9 +31,7 @@ public class StorageDaoImpl implements StorageDao {
         return new HashMap<>(fruits);
     }
 
-    private void checkFruit(String fruitName) {
-        if (!fruits.containsKey(fruitName)) {
-            throw new RuntimeException("The fruit " + fruitName + " is not exist");
-        }
+    public boolean checkFruit(String fruitName) {
+        return fruits.containsKey(fruitName);
     }
 }

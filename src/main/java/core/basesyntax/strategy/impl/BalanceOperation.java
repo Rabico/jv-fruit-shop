@@ -13,7 +13,6 @@ public class BalanceOperation implements DataOperation {
 
     @Override
     public void execute(FruitTransaction fruit) {
-
         dao.add(fruit);
     }
 }
