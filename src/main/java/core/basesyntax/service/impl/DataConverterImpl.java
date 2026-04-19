@@ -28,7 +28,7 @@ public class DataConverterImpl implements DataConverter {
         if (s.length != 3) {
             throw new IllegalArgumentException("wrong transaction length");
         }
-        for (String line : s ) {
+        for (String line : s) {
             line.trim();
         }
         return new FruitTransaction(s[0], s[1],

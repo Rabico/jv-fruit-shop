@@ -17,11 +17,13 @@ public class FileReaderImpl implements FileReader {
         InputStream inputStream = getClass()
                 .getClassLoader()
                 .getResourceAsStream(fileName);
-            if (inputStream == null) {
-                throw new RuntimeException("Resource not found: " + fileName
-                    + ". Make sure the file is placed in src/main/resources and the name is correct.");
-            }
-            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))){
+        if (inputStream == null) {
+            throw new RuntimeException("Resource not found: " + fileName
+                + ". Make sure the file is placed in src/main/resources and the name is correct.");
+        }
+
+        try (BufferedReader bufferedReader = new BufferedReader(
+                new InputStreamReader(inputStream))) {
             String header = bufferedReader.readLine(); //  explicitly skip header
             if (header == null) {
                 return Collections.emptyList();

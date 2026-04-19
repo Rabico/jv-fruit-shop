@@ -16,8 +16,8 @@ public class SupplyOperation implements DataOperation {
         if (dao.checkFruit(fruit.getName())) {
             dao.add(fruit);
         } else {
-        dao.updateQuantity(fruit.getName(), fruit.getQuantity()
-                + dao.actualQuantity(fruit.getName()));
+            dao.updateQuantity(fruit.getName(), fruit.getQuantity()
+                    + dao.actualQuantity(fruit.getName()));
         }
     }
 }
