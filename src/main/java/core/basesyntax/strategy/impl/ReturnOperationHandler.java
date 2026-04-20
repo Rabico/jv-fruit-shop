@@ -2,12 +2,12 @@ package core.basesyntax.strategy.impl;
 
 import core.basesyntax.db.StorageDao;
 import core.basesyntax.model.FruitTransaction;
-import core.basesyntax.strategy.DataOperation;
+import core.basesyntax.strategy.OperationHandler;
 
-public class ReturnOperation implements DataOperation {
+public class ReturnOperationHandler implements OperationHandler {
     private StorageDao dao;
 
-    public ReturnOperation(StorageDao dao) {
+    public ReturnOperationHandler(StorageDao dao) {
         this.dao = dao;
     }
 
@@ -15,7 +15,7 @@ public class ReturnOperation implements DataOperation {
     public void execute(FruitTransaction fruit) {
 
         if (!dao.checkFruit(fruit.getName())) {
-            throw new RuntimeException("The fruit " + fruit.getName() + " is not exist");
+            throw new RuntimeException("The fruit " + fruit.getName() + " does not exist");
         }
         dao.updateQuantity(fruit.getName(), fruit.getQuantity()
                 + dao.actualQuantity(fruit.getName()));

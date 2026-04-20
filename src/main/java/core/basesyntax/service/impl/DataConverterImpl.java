@@ -9,7 +9,7 @@ public class DataConverterImpl implements DataConverter {
     public List<FruitTransaction> convertToTransaction(List<String> transactions) {
         return transactions.stream().map(s -> s.split(","))
                 .map(s -> new FruitTransaction(s[0], s[1],
-                        Integer.parseInt(s[2])))
+                        parseInteger(s[2])))
                 .toList();
     }
 
@@ -29,7 +29,7 @@ public class DataConverterImpl implements DataConverter {
             throw new IllegalArgumentException("wrong transaction length");
         }
         for (String line : s) {
-            line.trim();
+            line = line.trim();
         }
         return new FruitTransaction(s[0], s[1],
                 parseInteger(s[2]));

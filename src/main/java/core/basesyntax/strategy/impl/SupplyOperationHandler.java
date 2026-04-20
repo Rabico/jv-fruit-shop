@@ -2,18 +2,18 @@ package core.basesyntax.strategy.impl;
 
 import core.basesyntax.db.StorageDao;
 import core.basesyntax.model.FruitTransaction;
-import core.basesyntax.strategy.DataOperation;
+import core.basesyntax.strategy.OperationHandler;
 
-public class SupplyOperation implements DataOperation {
+public class SupplyOperationHandler implements OperationHandler {
     private StorageDao dao;
 
-    public SupplyOperation(StorageDao dao) {
+    public SupplyOperationHandler(StorageDao dao) {
         this.dao = dao;
     }
 
     @Override
     public void execute(FruitTransaction fruit) {
-        if (dao.checkFruit(fruit.getName())) {
+        if (!dao.checkFruit(fruit.getName())) {
             dao.add(fruit);
         } else {
             dao.updateQuantity(fruit.getName(), fruit.getQuantity()

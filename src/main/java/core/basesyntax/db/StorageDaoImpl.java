@@ -1,17 +1,14 @@
 package core.basesyntax.db;
 
 import core.basesyntax.model.FruitTransaction;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class StorageDaoImpl implements StorageDao {
-    private Map<String, Integer> fruits = new HashMap<String, Integer>();
+    private final Map<String, Integer> fruits = new LinkedHashMap<>();
 
     @Override
     public void add(FruitTransaction fruit) {
-        if (fruits.containsKey(fruit.getName())) {
-            throw new IllegalArgumentException("Fruit already exists");
-        }
         fruits.put(fruit.getName(), fruit.getQuantity());
     }
 
@@ -27,8 +24,7 @@ public class StorageDaoImpl implements StorageDao {
 
     @Override
     public Map<String, Integer> getData() {
-
-        return new HashMap<>(fruits);
+        return new LinkedHashMap<>();
     }
 
     public boolean checkFruit(String fruitName) {

@@ -11,7 +11,7 @@ public class FruitTransaction {
         }
         this.name = name;
         if (quantity < 0) {
-            throw new IllegalArgumentException("quantity must be positive");
+            throw new IllegalArgumentException("quantity can't be negative");
         }
         this.quantity = quantity;
         this.operation = Operation.fromCode(operation);
