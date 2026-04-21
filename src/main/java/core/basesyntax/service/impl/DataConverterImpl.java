@@ -8,8 +8,7 @@ public class DataConverterImpl implements DataConverter {
     @Override
     public List<FruitTransaction> convertToTransaction(List<String> transactions) {
         return transactions.stream().map(s -> s.split(","))
-                .map(s -> new FruitTransaction(s[0], s[1],
-                        parseInteger(s[2])))
+                .map(this::parseTransaction)
                 .toList();
     }
 
@@ -28,8 +27,8 @@ public class DataConverterImpl implements DataConverter {
         if (s.length != 3) {
             throw new IllegalArgumentException("wrong transaction length");
         }
-        for (String line : s) {
-            line = line.trim();
+        for (int i = 0; i < s.length; i++) {
+            s[i] = s[i].trim();
         }
         return new FruitTransaction(s[0], s[1],
                 parseInteger(s[2]));

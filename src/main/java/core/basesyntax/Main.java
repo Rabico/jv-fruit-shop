@@ -26,10 +26,11 @@ import java.util.Map;
 public class Main {
     private static final String INPUT_FILE = "Data.csv";
     private static final String OUTPUT_FILE = "Report.csv";
+    private static final Map<Operation, OperationHandler> operations = new HashMap<>();
+    private static final StorageDao dao = new StorageDaoImpl();
 
     public static void main(String[] args) {
-        Map<Operation, OperationHandler> operations = new HashMap<>();
-        StorageDao dao = new StorageDaoImpl();
+
         operations.put(Operation.BALANCE, new BalanceOperationHandler(dao));
         operations.put(Operation.PURCHASE, new PurchaseOperationHandler(dao));
         operations.put(Operation.RETURN, new ReturnOperationHandler(dao));
@@ -51,5 +52,4 @@ public class Main {
         FileWriter fileWriter = new FileWriterImpl();
         fileWriter.write(report, OUTPUT_FILE);
     }
-
 }

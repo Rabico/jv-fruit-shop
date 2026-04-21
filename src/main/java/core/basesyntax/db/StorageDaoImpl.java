@@ -24,7 +24,7 @@ public class StorageDaoImpl implements StorageDao {
 
     @Override
     public Map<String, Integer> getData() {
-        return new LinkedHashMap<>();
+        return new LinkedHashMap<>(fruits);
     }
 
     public boolean checkFruit(String fruitName) {
